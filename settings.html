@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Inventory Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="dashboard.html" class="sidebar-brand">
+                <i class="fas fa-boxes-stacked"></i>
+                <span>Inventory</span>
+            </a>
+            <button class="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+            <li><a href="inventory.html"><i class="fas fa-box"></i><span>Inventory</span></a></li>
+            <li><a href="desktop.html"><i class="fas fa-desktop"></i><span>Desktop & Laptop</span></a></li>
+            <li><a href="printer.html"><i class="fas fa-print"></i><span>Printer</span></a></li>
+            <li><a href="server.html"><i class="fas fa-server"></i><span>Server</span></a></li>
+            <li><a href="nas.html"><i class="fas fa-hdd"></i><span>NAS</span></a></li>
+            <li><a href="firewall.html"><i class="fas fa-shield-alt"></i><span>Firewall</span></a></li>
+            <li><a href="switch.html"><i class="fas fa-network-wired"></i><span>Switch</span></a></li>
+            <li><a href="switchports.html"><i class="fas fa-plug"></i><span>Switch Ports</span></a></li>
+            <li><a href="router.html"><i class="fas fa-router"></i><span>Router</span></a></li>
+            <li><a href="accesspoint.html"><i class="fas fa-wifi"></i><span>Access Point</span></a></li>
+            <li><a href="cctv.html"><i class="fas fa-video"></i><span>CCTV</span></a></li>
+            <li><a href="iplist.html"><i class="fas fa-list-ol"></i><span>IP List</span></a></li>
+            <li><a href="nat.html"><i class="fas fa-exchange-alt"></i><span>NAT</span></a></li>
+            <li><a href="domainusers.html"><i class="fas fa-users"></i><span>Domain Users</span></a></li>
+            <li><a href="workinfo.html"><i class="fas fa-briefcase"></i><span>Work Information</span></a></li>
+            <li><a href="reports.html"><i class="fas fa-chart-bar"></i><span>Reports</span></a></li>
+            <li><a href="settings.html" class="active"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+            <li><a href="#" onclick="Auth.logout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+        </ul>
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="main-content">
+        <header class="top-navbar">
+            <div class="navbar-brand">
+                <button class="btn btn-outline-secondary mobile-menu-btn d-lg-none me-2">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <span>Settings</span>
+            </div>
+            <div class="navbar-actions">
+                <div class="navbar-search d-none d-md-block">
+                    <input type="text" placeholder="Search settings...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="btn btn-outline-secondary theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="navbar-user">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="content-area">
+            <div class="page-header">
+                <h1 class="page-title">Settings</h1>
+            </div>
+
+            <div class="row">
+                <!-- Change Password -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-key me-2"></i>Change Password</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="passwordForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Current Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="currentPassword" required>
+                                        <button type="button" class="btn btn-outline-secondary password-toggle">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">New Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="newPassword" required>
+                                        <button type="button" class="btn btn-outline-secondary password-toggle">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirm New Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="confirmPassword" required>
+                                        <button type="button" class="btn btn-outline-secondary password-toggle">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Change Password
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme Settings -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-palette me-2"></i>Appearance</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Theme</label>
+                                <select class="form-select" id="themeSelect">
+                                    <option value="light">Light Mode</option>
+                                    <option value="dark">Dark Mode</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Accent Color</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary color-btn" data-color="#4361ee" style="background: #4361ee; color: white; border: none;">Primary</button>
+                                    <button class="btn btn-outline-success color-btn" data-color="#10b981" style="background: #10b981; color: white; border: none;">Green</button>
+                                    <button class="btn btn-outline-danger color-btn" data-color="#f72585" style="background: #f72585; color: white; border: none;">Pink</button>
+                                    <button class="btn btn-outline-warning color-btn" data-color="#f8961e" style="background: #f8961e; color: white; border: none;">Orange</button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="saveThemeSettings()">
+                                <i class="fas fa-save me-2"></i>Save Theme
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backup & Restore -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-database me-2"></i>Backup & Restore</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Backup Data</label>
+                                <p class="text-muted small">Download a complete backup of all your inventory data as JSON file.</p>
+                                <button class="btn btn-success" onclick="downloadBackup()">
+                                    <i class="fas fa-download me-2"></i>Download Backup
+                                </button>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label class="form-label">Restore Data</label>
+                                <p class="text-muted small">Restore your inventory data from a previously downloaded backup file.</p>
+                                <input type="file" id="restoreFile" accept=".json" class="form-control mb-2">
+                                <button class="btn btn-warning" onclick="restoreBackup()">
+                                    <i class="fas fa-upload me-2"></i>Restore Backup
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storage Info -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-info-circle me-2"></i>Storage Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="storageInfo">
+                                <p><strong>Total Assets:</strong> <span id="storageTotalAssets">0</span></p>
+                                <p><strong>Storage Used:</strong> <span id="storageUsed">0 KB</span></p>
+                                <p><strong>Last Backup:</strong> <span id="lastBackup">Never</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div class="col-12 mb-4">
+                    <div class="card border-danger">
+                        <div class="card-header bg-danger text-white">
+                            <h5><i class="fas fa-exclamation-triangle me-2"></i>Danger Zone</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted">These actions are irreversible. Please proceed with caution.</p>
+                            <button class="btn btn-danger" onclick="resetApplication()">
+                                <i class="fas fa-trash-alt me-2"></i>Reset Application
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2024 Inventory Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/inventory.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!Auth.protectRoute()) return;
+            UI.init();
+            Inventory.init();
+            loadSettings();
+            loadStorageInfo();
+        });
+
+        function loadSettings() {
+            const settings = Storage.loadData(Storage.KEYS.SETTINGS, {});
+            
+            // Load theme
+            if (settings.theme) {
+                document.getElementById('themeSelect').value = settings.theme;
+            }
+            
+            // Load accent color
+            if (settings.accentColor) {
+                document.documentElement.style.setProperty('--primary-color', settings.accentColor);
+            }
+        }
+
+        function loadStorageInfo() {
+            const inventory = Inventory.loadInventory();
+            const storageInfo = Storage.getStorageInfo();
+            
+            document.getElementById('storageTotalAssets').textContent = inventory.length;
+            document.getElementById('storageUsed').textContent = (storageInfo.total / 1024).toFixed(2) + ' KB';
+            
+            const backup = Storage.loadData(Storage.KEYS.SETTINGS, {}).lastBackup;
+            document.getElementById('lastBackup').textContent = backup ? UI.formatDate(backup) : 'Never';
+        }
+
+        // Password form handler
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword !== confirmPassword) {
+                UI.showToast('Passwords do not match', 'error');
+                return;
+            }
+            
+            if (newPassword.length < 6) {
+                UI.showToast('Password must be at least 6 characters', 'error');
+                return;
+            }
+            
+            const result = Auth.changePassword(currentPassword, newPassword);
+            
+            if (result.success) {
+                UI.showToast(result.message, 'success');
+                this.reset();
+            } else {
+                UI.showToast(result.message, 'error');
+            }
+        });
+
+        function saveThemeSettings() {
+            const theme = document.getElementById('themeSelect').value;
+            const settings = Storage.loadData(Storage.KEYS.SETTINGS, {});
+            
+            settings.theme = theme;
+            Storage.saveData(Storage.KEYS.SETTINGS, settings);
+            
+            UI.setTheme(theme);
+            UI.showToast('Theme saved successfully', 'success');
+        }
+
+        // Color buttons
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const color = this.dataset.color;
+                document.documentElement.style.setProperty('--primary-color', color);
+                
+                const settings = Storage.loadData(Storage.KEYS.SETTINGS, {});
+                settings.accentColor = color;
+                Storage.saveData(Storage.KEYS.SETTINGS, settings);
+                
+                UI.showToast('Accent color saved', 'success');
+            });
+        });
+
+        function downloadBackup() {
+            const backupData = Storage.backupData();
+            const blob = new Blob([backupData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'inventory_backup_' + new Date().toISOString().slice(0, 10) + '.json';
+            link.click();
+            URL.revokeObjectURL(url);
+            
+            // Save backup date
+            const settings = Storage.loadData(Storage.KEYS.SETTINGS, {});
+            settings.lastBackup = new Date().toISOString();
+            Storage.saveData(Storage.KEYS.SETTINGS, settings);
+            
+            UI.showToast('Backup downloaded successfully', 'success');
+            loadStorageInfo();
+        }
+
+        function restoreBackup() {
+            const fileInput = document.getElementById('restoreFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                UI.showToast('Please select a backup file', 'error');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const result = Storage.restoreData(e.target.result);
+                    if (result) {
+                        UI.showToast('Backup restored successfully', 'success');
+                        loadStorageInfo();
+                    } else {
+                        UI.showToast('Failed to restore backup', 'error');
+                    }
+                } catch (error) {
+                    UI.showToast('Invalid backup file', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetApplication() {
+            UI.showConfirm('Are you sure you want to reset the application? This will delete all data and cannot be undone.', function() {
+                Storage.clearAllData();
+                UI.showToast('Application reset successfully', 'success');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Inventory Management System</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="dashboard.html" class="sidebar-brand">
+                <i class="fas fa-boxes-stacked"></i>
+                <span>Inventory</span>
+            </a>
+            <button class="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+            <li><a href="inventory.html"><i class="fas fa-box"></i><span>Inventory</span></a></li>
+            <li><a href="desktop.html"><i class="fas fa-desktop"></i><span>Desktop & Laptop</span></a></li>
+            <li><a href="printer.html"><i class="fas fa-print"></i><span>Printer</span></a></li>
+            <li><a href="server.html"><i class="fas fa-server"></i><span>Server</span></a></li>
+            <li><a href="nas.html"><i class="fas fa-hdd"></i><span>NAS</span></a></li>
+            <li><a href="firewall.html"><i class="fas fa-shield-alt"></i><span>Firewall</span></a></li>
+            <li><a href="switch.html"><i class="fas fa-network-wired"></i><span>Switch</span></a></li>
+            <li><a href="switchports.html"><i class="fas fa-plug"></i><span>Switch Ports</span></a></li>
+            <li><a href="router.html"><i class="fas fa-router"></i><span>Router</span></a></li>
+            <li><a href="accesspoint.html"><i class="fas fa-wifi"></i><span>Access Point</span></a></li>
+            <li><a href="cctv.html"><i class="fas fa-video"></i><span>CCTV</span></a></li>
+            <li><a href="iplist.html"><i class="fas fa-list-ol"></i><span>IP List</span></a></li>
+            <li><a href="nat.html"><i class="fas fa-exchange-alt"></i><span>NAT</span></a></li>
+            <li><a href="domainusers.html"><i class="fas fa-users"></i><span>Domain Users</span></a></li>
+            <li><a href="workinfo.html"><i class="fas fa-briefcase"></i><span>Work Information</span></a></li>
+            <li><a href="reports.html"><i class="fas fa-chart-bar"></i><span>Reports</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+            <li><a href="#" onclick="Auth.logout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="navbar-brand">
+                <button class="btn btn-outline-secondary mobile-menu-btn d-lg-none me-2">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <span>Dashboard</span>
+            </div>
+            
+            <div class="navbar-actions">
+                <div class="navbar-search d-none d-md-block">
+                    <input type="text" placeholder="Search assets...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <button class="btn btn-outline-secondary theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <div class="navbar-user">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="window.location.href='inventory.html'">
+                        <i class="fas fa-plus me-2"></i>Add Asset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon primary">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="stat-value" id="totalAssets">0</div>
+                        <div class="stat-label">Total Assets</div>
+                        <div class="stat-trend up"><i class="fas fa-arrow-up"></i> All</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="stat-value" id="totalComputers">0</div>
+                        <div class="stat-label">Computers</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="stat-value" id="totalLaptops">0</div>
+                        <div class="stat-label">Laptops</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon danger">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div class="stat-value" id="totalPrinters">0</div>
+                        <div class="stat-label">Printers</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon primary">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="stat-value" id="totalServers">0</div>
+                        <div class="stat-label">Servers</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="stat-value" id="totalNetworkDevices">0</div>
+                        <div class="stat-label">Network Devices</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="stat-value" id="totalCCTV">0</div>
+                        <div class="stat-label">CCTV</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-value" id="availableAssets">0</div>
+                        <div class="stat-label">Available</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon primary">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-value" id="assignedAssets">0</div>
+                        <div class="stat-label">Assigned</div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-value" id="warrantyExpiring">0</div>
+                        <div class="stat-label">Warranty Expiring</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row mb-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-chart-pie me-2"></i>Assets by Category</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="categoryChart" style="height: 300px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-chart-bar me-2"></i>Assets by Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="statusChart" style="height: 300px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-chart-area me-2"></i>Assets by Department</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="departmentChart" style="height: 300px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-history me-2"></i>Recent Activity</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="recentActivity">
+                                <div class="empty-state">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>No recent activity</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-clock me-2"></i>Recently Added Assets</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="recentAssets">
+                                <div class="empty-state">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <h4>No recent assets</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Inventory Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/inventory.js"></script>
+    
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            if (!Auth.protectRoute()) return;
+            
+            // Initialize UI
+            UI.init();
+            
+            // Initialize Inventory
+            Inventory.init();
+            
+            // Update dashboard
+            updateDashboard();
+        });
+
+        function updateDashboard() {
+            // Get statistics
+            const stats = Inventory.getStatistics();
+            
+            // Update stat cards
+            document.getElementById('totalAssets').textContent = stats.totalAssets;
+            document.getElementById('totalComputers').textContent = stats.totalComputers;
+            document.getElementById('totalLaptops').textContent = stats.totalLaptops;
+            document.getElementById('totalPrinters').textContent = stats.totalPrinters;
+            document.getElementById('totalServers').textContent = stats.totalServers;
+            document.getElementById('totalNetworkDevices').textContent = stats.totalNetworkDevices;
+            document.getElementById('totalCCTV').textContent = stats.totalCCTV;
+            document.getElementById('availableAssets').textContent = stats.availableAssets;
+            document.getElementById('assignedAssets').textContent = stats.assignedAssets;
+            document.getElementById('warrantyExpiring').textContent = stats.warrantyExpiringSoon;
+            
+            // Initialize charts
+            Charts.initDashboardCharts();
+            
+            // Load recent activity
+            loadRecentActivity();
+            
+            // Load recent assets
+            loadRecentAssets();
+        }
+
+        function loadRecentActivity() {
+            const activities = Storage.getRecentActivities(5);
+            const container = document.getElementById('recentActivity');
+            
+            if (activities.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-clock"></i>
+                        <h4>No recent activity</h4>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = activities.map(activity => `
+                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                    <div class="me-3">
+                        <i class="fas fa-circle-notch text-primary"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="fw-bold">${activity.action}</div>
+                        <small class="text-muted">${activity.details}</small>
+                    </div>
+                    <small class="text-muted">${UI.formatDate(activity.timestamp)}</small>
+                </div>
+            `).join('');
+        }
+
+        function loadRecentAssets() {
+            const inventory = Inventory.loadInventory();
+            const recent = [...inventory]
+                .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate))
+                .slice(0, 5);
+            
+            const container = document.getElementById('recentAssets');
+            
+            if (recent.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-plus-circle"></i>
+                        <h4>No recent assets</h4>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = recent.map(asset => `
+                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                    <div class="me-3">
+                        <i class="fas fa-box text-success"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="fw-bold">${asset.assetName}</div>
+                        <small class="text-muted">${asset.assetId}</small>
+                    </div>
+                    <span class="badge badge-${Inventory.getStatusBadgeClass(asset.status)}">${asset.status}</span>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
