@@ -1,0 +1,483 @@
+/**
+ * Responsive Styles for Inventory Management System
+ * Mobile, Tablet, and Desktop adaptations
+ */
+
+/* Extra Large Devices (1200px and up) */
+@media (min-width: 1200px) {
+    .container-xl {
+        max-width: 1400px;
+    }
+}
+
+/* Large Devices (992px to 1199px) */
+@media (max-width: 1199px) {
+    :root {
+        --sidebar-width: 220px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-value {
+        font-size: 1.75rem;
+    }
+}
+
+/* Medium Devices (768px to 991px) */
+@media (max-width: 991px) {
+    :root {
+        --sidebar-width: 200px;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+    }
+    
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-speed);
+    }
+    
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .top-navbar {
+        padding: 0 15px;
+    }
+    
+    .navbar-search {
+        display: none;
+    }
+    
+    .content-area {
+        padding: 20px 15px;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .page-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .stat-card {
+        margin-bottom: 20px;
+    }
+    
+    .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-group {
+        min-width: 100%;
+    }
+    
+    .table-container {
+        border-radius: 10px;
+    }
+    
+    .card {
+        border-radius: 10px;
+    }
+    
+    .modal-dialog {
+        max-width: 90%;
+        margin: 10px auto;
+    }
+}
+
+/* Small Devices (576px to 767px) */
+@media (max-width: 767px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+    
+    .login-logo i {
+        font-size: 50px;
+    }
+    
+    .login-logo h2 {
+        font-size: 1.5rem;
+    }
+    
+    .sidebar {
+        width: 260px;
+    }
+    
+    .top-navbar {
+        height: auto;
+        padding: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .navbar-user {
+        margin-left: auto;
+    }
+    
+    .user-info {
+        display: none;
+    }
+    
+    .content-area {
+        padding: 15px;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 20px 15px;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+    
+    .card-header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+    
+    .table thead th {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .action-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-sm {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 15px;
+    }
+    
+    .toast-container {
+        left: 10px;
+        right: 10px;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .page-link {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra Small Devices (480px and below) */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px 15px;
+    }
+    
+    .login-logo i {
+        font-size: 40px;
+    }
+    
+    .login-logo h2 {
+        font-size: 1.25rem;
+    }
+    
+    .top-navbar {
+        padding: 10px;
+    }
+    
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+    
+    .content-area {
+        padding: 10px;
+    }
+    
+    .page-title {
+        font-size: 1.25rem;
+    }
+    
+    .stat-card {
+        padding: 15px;
+    }
+    
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .stat-value {
+        font-size: 1.25rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .card {
+        border-radius: 8px;
+    }
+    
+    .card-header {
+        padding: 12px;
+    }
+    
+    .card-body {
+        padding: 12px;
+    }
+    
+    .table thead th,
+    .table td {
+        padding: 8px 5px;
+        font-size: 0.75rem;
+    }
+    
+    .badge {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .btn-sm {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .action-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .form-label {
+        font-size: 0.85rem;
+    }
+    
+    .modal-dialog {
+        max-width: 95%;
+        margin: 5px auto;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 12px;
+    }
+    
+    .footer {
+        padding: 15px 10px;
+        font-size: 0.85rem;
+    }
+    
+    /* Hide less important columns on very small screens */
+    .table .hide-mobile {
+        display: none;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .login-card {
+        padding: 20px;
+        max-width: 400px;
+    }
+    
+    .login-logo {
+        margin-bottom: 15px;
+    }
+    
+    .login-logo i {
+        font-size: 35px;
+    }
+    
+    .top-navbar {
+        height: 50px;
+    }
+    
+    .content-area {
+        padding: 10px;
+    }
+    
+    .stat-card {
+        padding: 12px;
+    }
+    
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .stat-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* High DPI/Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card,
+    .stat-card,
+    .table-container,
+    .modal-content {
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .btn:hover,
+    .action-btn:hover,
+    .sidebar-menu a:hover {
+        transform: none;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+    
+    .stat-card:hover {
+        transform: none;
+    }
+}
+
+/* Print-specific responsive adjustments */
+@media print and (max-width: 767px) {
+    .table {
+        font-size: 8px !important;
+    }
+    
+    .table thead th,
+    .table td {
+        padding: 5px 3px !important;
+    }
+}
+
+/* Dark mode responsive adjustments */
+@media (max-width: 767px) {
+    [data-theme="dark"] .sidebar {
+        background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    [data-theme="dark"] .sidebar-menu a {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    [data-theme="dark"] .sidebar-menu a:hover,
+    [data-theme="dark"] .sidebar-menu a.active {
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+    }
+}
+
+/* Animation adjustments for mobile */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Tablet specific adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .stat-card {
+        padding: 18px;
+    }
+    
+    .stat-value {
+        font-size: 1.6rem;
+    }
+    
+    .table thead th {
+        padding: 12px 10px;
+    }
+    
+    .table td {
+        padding: 12px 10px;
+    }
+}
